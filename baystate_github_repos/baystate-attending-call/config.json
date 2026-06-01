@@ -1,0 +1,75 @@
+{
+  "attendings": [
+    {
+      "name": "Stuart Anfang",
+      "active": true,
+      "no_call": []
+    },
+    {
+      "name": "Bruce Waslick",
+      "active": true,
+      "no_call": []
+    },
+    {
+      "name": "Sonia Riyaz",
+      "active": true,
+      "no_call": []
+    },
+    {
+      "name": "Flannery Merideth",
+      "active": true,
+      "no_call": []
+    },
+    {
+      "name": "Jennifer Sharma",
+      "active": true,
+      "no_call": []
+    },
+    {
+      "name": "Casey Lenderman",
+      "active": true,
+      "no_call": []
+    },
+    {
+      "name": "Deepika Sundararaj",
+      "active": true,
+      "no_call": []
+    },
+    {
+      "name": "Faith Donaghey",
+      "active": true,
+      "no_call": []
+    },
+    {
+      "name": "Sarah Slabaugh",
+      "active": true,
+      "no_call": []
+    },
+    {
+      "name": "Zachary Herrmann",
+      "active": true,
+      "no_call": []
+    },
+    {
+      "name": "Kevin Hill",
+      "active": true,
+      "no_call": []
+    },
+    {
+      "name": "Stephanie Daly",
+      "active": true,
+      "no_call": []
+    },
+    {
+      "name": "Hossain Khan",
+      "active": true,
+      "no_call": []
+    },
+    {
+      "name": "Brianne Kumar",
+      "active": true,
+      "no_call": []
+    }
+  ],
+  "program_no_call": []
+}
