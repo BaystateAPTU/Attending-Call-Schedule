@@ -103,9 +103,33 @@ def schedule_month(year, month, cfg, seed=None):
     # extra attendings get one additional day
     counts = {name: base + (1 if i < extra else 0) for i, name in enumerate(pool)}
 
-    # Shuffle pool so the "extra" days are distributed randomly
+    # Shuffle pool so the "extra" days are distributed randomly,
+    # but slightly penalize attendings with more no-call requests
+    # (they are more likely to be placed in the "extra day" slots).
     shuffled_pool = pool[:]
-    rng.shuffle(shuffled_pool)
+    nc_counts = {
+        a["name"]: len(a.get("no_call", []))
+        for a in cfg["attendings"]
+    }
+    # Weight = 1 + no_call_count (more no-call requests -> higher weight ->
+    # more likely to be drawn early and assigned base+1 days)
+    weights = [1 + nc_counts.get(name, 0) for name in shuffled_pool]
+    ordered = []
+    remaining = list(range(len(shuffled_pool)))
+    while remaining:
+        w = [weights[i] for i in remaining]
+        total = sum(w)
+        r = rng.random() * total
+        cum = 0
+        chosen_idx = remaining[-1]
+        for j, i in enumerate(remaining):
+            cum += weights[i]
+            if r < cum:
+                chosen_idx = i
+                break
+        ordered.append(shuffled_pool[chosen_idx])
+        remaining.remove(chosen_idx)
+    shuffled_pool = ordered
     counts = {name: base + (1 if i < extra else 0) for i, name in enumerate(shuffled_pool)}
 
     # Build the assignment list respecting max-once-per-week
